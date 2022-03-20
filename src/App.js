@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import useOnline from "./onlinestatus";
+
+import "./App.css";
 
 function App() {
+  const online = useOnline();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3 class="ui center aligned icon header">
+        <i class="circular plug icon"></i>
+        React network Monitor
+      </h3>
+
+      <div class="ui two column centered grid">
+        <span>
+          {online ? (
+            <div className="ui green message">
+              {" "}
+              <i class="wifi icon"> </i> Congrats you are ONLINE
+            </div>
+          ) : (
+            <div className="ui red message">
+              {" "}
+              <i class="meh icon"> </i> please check your network connection
+            </div>
+          )}
+        </span>{" "}
+      </div>
     </div>
   );
 }
